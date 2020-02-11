@@ -10,5 +10,7 @@ jobs:
   plan:
   - get: pipes
     trigger: true
-  - set_pipeline: git
+  - set_pipeline: hello-world
     file: pipes/hello.yml
+  - set_pipeline: set-pipes
+    file: pipes/set-pipes.yml
