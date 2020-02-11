@@ -1,0 +1,14 @@
+resources:
+- name: pipes
+  type: git
+  icon: github-circle
+  source:
+    uri: https://github.com/kc1r74p/my-pipelines
+
+jobs:
+- name: set-pipes
+  plan:
+  - get: pipelines-and-tasks
+    trigger: true
+  - set_pipeline: git
+    file: pipes/hello.yml
