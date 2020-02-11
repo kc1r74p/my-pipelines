@@ -8,7 +8,7 @@ resources:
 jobs:
 - name: set-pipes
   plan:
-  - get: pipelines-and-tasks
+  - get: pipes
     trigger: true
   - set_pipeline: git
     file: pipes/hello.yml
