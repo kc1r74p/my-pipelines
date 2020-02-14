@@ -13,7 +13,7 @@ jobs:
         args:
         - -exc
         - |
-          #apk add bash > /dev/null
-          apk add figlet > /dev/null
-          figlet Hello World!
-          figlet Some random concourse !!! ©
+          df -h
+          #apk add figlet > /dev/null
+          #figlet Hello World!
+          #figlet Some random concourse !!! ©
