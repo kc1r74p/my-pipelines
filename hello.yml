@@ -13,7 +13,6 @@ jobs:
         args:
         - -exc
         - |
-          apk add catimg
           #apk add bash > /dev/null
           apk add figlet > /dev/null
           figlet Hello World!
