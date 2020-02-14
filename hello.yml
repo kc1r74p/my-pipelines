@@ -3,7 +3,6 @@ jobs:
   public: true
   plan:
   - task: hello-world
-    privileged: true
     config:
       platform: linux
       image_resource:
