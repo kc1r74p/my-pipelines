@@ -31,7 +31,8 @@ jobs:
         - -exc
         - |
           set +x
-          apk add git  2>&1 >/dev/null
+          apk add git 2>&1 >/dev/null
+          apk add --virtual build-dependencies build-base gcc 2>&1 >/dev/null 
           apk add imagemagick  2>&1 >/dev/null
           git clone https://github.com/stefanhaustein/TerminalImageViewer.git
           cd TerminalImageViewer/src/main/cpp
