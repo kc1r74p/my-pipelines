@@ -55,4 +55,5 @@ jobs:
         args:
         - -exc
         - |
+          cd ..
           ls -lha
