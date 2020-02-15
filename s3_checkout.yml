@@ -40,6 +40,8 @@ jobs:
   plan:
   - in_parallel:  
     - get: ingress_p1
+      params:
+        rootfs: true
     - get: ingress_p2
     - get: ingress_p3
   - task: s3-list
