@@ -3,7 +3,7 @@ resources:
   type: s3
   source:
     bucket: ingress
-    regexp: GH01.(.*).MP4
+    regexp: GH01(.*).MP4
     initial_path: GH010.MP4
     access_key_id: ((s3_access_id))
     secret_access_key: ((s3_access_key))
@@ -15,7 +15,7 @@ resources:
   type: s3
   source:
     bucket: ingress
-    regexp: GH02.(.*).MP4
+    regexp: GH02(.*).MP4
     initial_path: GH020.MP4
     access_key_id: ((s3_access_id))
     secret_access_key: ((s3_access_key))
@@ -27,7 +27,7 @@ resources:
   type: s3
   source:
     bucket: ingress
-    regexp: GH03.(.*).MP4
+    regexp: GH03(.*).MP4
     initial_path: GH030.MP4
     access_key_id: ((s3_access_id))
     secret_access_key: ((s3_access_key))
