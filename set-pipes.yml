@@ -14,3 +14,5 @@ jobs:
     file: pipes/hello.yml
   - set_pipeline: set-pipes
     file: pipes/set-pipes.yml
+  - set_pipeline: renderer
+    file: pipes/s3_checkout.yml  
