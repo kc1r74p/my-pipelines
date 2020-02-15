@@ -1,5 +1,5 @@
 resources:
-- name: ingress_1
+- name: ingress_p1
   type: s3
   source:
     bucket: ingress
@@ -11,7 +11,7 @@ resources:
     disable_ssl: true
     skip_download: true
     
-- name: ingress_2
+- name: ingress_p2
   type: s3
   source:
     bucket: ingress
@@ -38,8 +38,10 @@ resources:
 jobs:
 - name: list_ingress
   plan:
-  - get: ingress
-    trigger: true
+  in_parallel:  
+    - get: ingress_p1
+    - get: ingress_p2
+    - get: ingress_p3    
   - task: s3-list
     config:
       platform: linux
