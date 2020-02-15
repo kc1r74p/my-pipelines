@@ -53,6 +53,7 @@ jobs:
           args:
           - -exc
           - |
+            apk add curl
             curl ((s3_host))
             ls -lha
             cd ..
