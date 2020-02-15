@@ -10,6 +10,7 @@ resources:
     endpoint: ((s3_host))
     cloudfront_url: ((s3_host))
     disable_ssl: true
+    skip_ssl_verification: true
     
 - name: ingress_p2
   type: s3
@@ -22,6 +23,7 @@ resources:
     endpoint: ((s3_host))
     cloudfront_url: ((s3_host))    
     disable_ssl: true
+    skip_ssl_verification: true
 
 - name: ingress_p3
   type: s3
@@ -34,6 +36,7 @@ resources:
     endpoint: ((s3_host))
     cloudfront_url: ((s3_host))
     disable_ssl: true
+    skip_ssl_verification: true
     
 jobs:
 - name: list_ingress
@@ -42,19 +45,17 @@ jobs:
     - get: ingress_p1
     - get: ingress_p2
     - get: ingress_p3
-    - task: s3-list
-      config:
-        platform: linux
-        image_resource:
-          type: docker-image
-          source: {repository: alpine}
-        run:
-          path: sh
-          args:
-          - -exc
-          - |
-            apk add curl
-            curl ((s3_host))
-            ls -lha
-            cd ..
-            ls -lha
+  - task: s3-list
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: alpine}
+      run:
+        path: sh
+        args:
+        - -exc
+        - |
+          ls -lha
+          cd ..
+          ls -lha
