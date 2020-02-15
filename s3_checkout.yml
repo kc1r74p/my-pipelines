@@ -31,6 +31,7 @@ jobs:
         - -exc
         - |
           set +x
+          apk add pv
           apk add cifs-utils
           apk add ffmpeg
           mkdir /mnt/ingress
@@ -41,10 +42,10 @@ jobs:
           echo
           echo
           echo "Get part"
-          cp /mnt/ingress/GH010057.MP4 ./GH010057.MP4
+          pv /mnt/ingress/GH010057.MP4 > ./GH010057.MP4
           echo
           ls -altrh
           echo "Extract frame"
           ffmpeg -i ./GH010057.MP4 -s 2704x1520 -vframes 1 -f image2 frame.png
-          cp ./frame.png /mnt/ingress/frame.png
+          pv ./frame.png > /mnt/ingress/frame.png
           echo done
