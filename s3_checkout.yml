@@ -38,10 +38,10 @@ resources:
 jobs:
 - name: list_ingress
   plan:
-  in_parallel:  
+  - in_parallel:  
     - get: ingress_p1
     - get: ingress_p2
-    - get: ingress_p3    
+    - get: ingress_p3
   - task: s3-list
     config:
       platform: linux
