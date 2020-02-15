@@ -19,8 +19,8 @@ jobs:
  #   - get: ingress_p2
 #    - get: ingress_p3
   - task: mount_ingress
+    privileged: true
     config:
-      privileged: true
       platform: linux
       image_resource:
         type: docker-image
