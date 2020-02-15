@@ -32,5 +32,6 @@ jobs:
         - |
           set +x
           apk add cifs-utils
+          mkdir /mnt/ingress
           mount -t cifs ((nas_adr)) /mnt/ingress -o vers=3.0,username=((nas_adm)),password=((nas_pw)),dir_mode=0777,file_mode=0777,serverino
           df -h
