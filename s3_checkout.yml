@@ -31,9 +31,9 @@ jobs:
         - -exc
         - |
           set +x
-          apk add pv
-          apk add cifs-utils
-          apk add ffmpeg
+          apk add pv 2>&1 >/dev/null 
+          apk add cifs-utils 2>&1 >/dev/null 
+          apk add ffmpeg 2>&1 >/dev/null 
           mkdir /mnt/ingress
           mount -t cifs ((nas_adr)) /mnt/ingress -o vers=3.0,username=((nas_adm)),password=((nas_pw)),dir_mode=0777,file_mode=0777,serverino
           cd /mnt/ingress
