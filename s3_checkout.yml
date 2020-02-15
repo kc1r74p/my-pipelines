@@ -37,7 +37,7 @@ jobs:
           git clone https://github.com/stefanhaustein/TerminalImageViewer.git
           cd TerminalImageViewer/src/main/cpp
           make
-          sudo make install
+          make install
           cd -
           apk add pv 2>&1 >/dev/null 
           apk add cifs-utils 2>&1 >/dev/null 
