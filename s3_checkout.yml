@@ -11,7 +11,7 @@ resources:
     cloudfront_url: ((s3_host))
     disable_ssl: true
     skip_ssl_verification: true
-    skip_download: true
+    use_v2_signing: true
     
 - name: ingress_p2
   type: s3
@@ -24,8 +24,8 @@ resources:
     endpoint: ((s3_host))
     cloudfront_url: ((s3_host))    
     disable_ssl: true
-    skip_ssl_verification: true
-    skip_download: true
+    skip_ssl_verification: true    
+    use_v2_signing: true
     
 - name: ingress_p3
   type: s3
@@ -39,7 +39,7 @@ resources:
     cloudfront_url: ((s3_host))
     disable_ssl: true
     skip_ssl_verification: true
-    skip_download: true
+    use_v2_signing: true
     
 jobs:
 - name: list_ingress
@@ -59,6 +59,7 @@ jobs:
         args:
         - -exc
         - |
+          export
           ls -lha
           cd ..
           ls -lha
