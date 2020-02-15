@@ -8,7 +8,6 @@ resources:
     secret_access_key: ((s3_access_key))
     endpoint: ((s3_host))
     disable_ssl: true
-    skip_download: true
     
 jobs:
 - name: list_ingress
