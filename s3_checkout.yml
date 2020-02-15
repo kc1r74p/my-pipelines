@@ -38,22 +38,22 @@ resources:
 jobs:
 - name: list_ingress
   plan:
- # - in_parallel:  
- #   - get: ingress_p1
- #   - get: ingress_p2
- #   - get: ingress_p3
-  - task: s3-list
-    config:
-      platform: linux
-      image_resource:
-        type: docker-image
-        source: {repository: alpine}
-      run:
-        path: sh
-        args:
-        - -exc
-        - |
-          curl ((s3_host))
-          ls -lha
-          cd ..
-          ls -lha
+  - in_parallel:  
+    - get: ingress_p1
+    - get: ingress_p2
+    - get: ingress_p3
+    - task: s3-list
+      config:
+        platform: linux
+        image_resource:
+          type: docker-image
+          source: {repository: alpine}
+        run:
+          path: sh
+          args:
+          - -exc
+          - |
+            curl ((s3_host))
+            ls -lha
+            cd ..
+            ls -lha
