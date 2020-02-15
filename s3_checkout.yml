@@ -13,7 +13,6 @@
 
 jobs:
 - name: list_ingress
-  privileged: true
   plan:
   #- in_parallel:  
   #  - get: ingress_p1
