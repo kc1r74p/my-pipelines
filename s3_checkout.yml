@@ -1,48 +1,24 @@
-resources:
-- name: ingress_p1
-  type: s3
-  source:
-    bucket: ingress
-    regexp: GH01(.*).MP4
-    initial_path: GH010.MP4
-    access_key_id: ((s3_access_id))
-    secret_access_key: ((s3_access_key))
-    endpoint: ((s3_host))
-    cloudfront_url: ((s3_host))
-    disable_ssl: true
-    
-- name: ingress_p2
-  type: s3
-  source:
-    bucket: ingress
-    regexp: GH02(.*).MP4
-    initial_path: GH020.MP4
-    access_key_id: ((s3_access_id))
-    secret_access_key: ((s3_access_key))
-    endpoint: ((s3_host))
-    cloudfront_url: ((s3_host))    
-    disable_ssl: true
-    
-- name: ingress_p3
-  type: s3
-  source:
-    bucket: ingress
-    regexp: GH03(.*).MP4
-    initial_path: GH030.MP4
-    access_key_id: ((s3_access_id))
-    secret_access_key: ((s3_access_key))
-    endpoint: ((s3_host))
-    cloudfront_url: ((s3_host))
-    disable_ssl: true
-    
+#resources:
+#- name: ingress_p1
+#  type: s3
+#  source:
+#    bucket: ingress
+#    regexp: GH01(.*).MP4
+#    initial_path: GH010.MP4
+#    access_key_id: ((s3_access_id))
+#    secret_access_key: ((s3_access_key))
+#    endpoint: ((s3_host))
+#    cloudfront_url: ((s3_host))
+#    disable_ssl: true
+
 jobs:
 - name: list_ingress
   plan:
-  - in_parallel:  
-    - get: ingress_p1
-    - get: ingress_p2
-    - get: ingress_p3
-  - task: s3-list
+  #- in_parallel:  
+  #  - get: ingress_p1
+ #   - get: ingress_p2
+#    - get: ingress_p3
+  - task: mount_ingress
     config:
       platform: linux
       image_resource:
@@ -53,7 +29,7 @@ jobs:
         args:
         - -exc
         - |
-          export
-          ls -lha
-          cd ..
-          ls -lha
+          set +x
+          apk add cifs-utils
+          mount -t cifs ((nas_adr)) /mnt/ingress -o vers=3.0,username=((nas_adm)),password=((nas_pw)),dir_mode=0777,file_mode=0777,serverino
+          df -h
