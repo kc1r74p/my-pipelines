@@ -1,0 +1,27 @@
+resource_types:
+- name: ssl_check
+  type: docker-image
+  source:
+    repository: gutzel/concourse-ssl-timer-resource
+    tag: latest
+
+resources:
+- name: ssl_check
+  type: ssl_check
+
+jobs:
+- name: check-ssl-days
+  plan:
+  - get: ssl_check
+  - task: check-cert-by-dns
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source: {repository: alpine}
+      run:
+        path: sh
+        args:
+        - -exc
+        - |
+          echo ":)"
