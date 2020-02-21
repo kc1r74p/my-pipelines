@@ -6,13 +6,15 @@ resource_types:
     tag: latest
 
 resources:
-- name: ssl_check
+- name: boring_cloud_ssl
   type: ssl_check
+  source:
+    dns: boring.cloud
 
 jobs:
 - name: check-ssl-days
   plan:
-  - get: ssl_check
+  - get: boring_cloud_ssl
   - task: check-cert-by-dns
     config:
       platform: linux
