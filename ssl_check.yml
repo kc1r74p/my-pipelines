@@ -14,7 +14,7 @@ resources:
 - name: eu1_dev_ssl
   type: ssl_check
   source:
-    dns: eu1.dev
+    dns: www.eu1.dev
 
 jobs:
 - name: check-ssl-days
