@@ -9,7 +9,7 @@ resources:
 - name: boring_cloud_ssl
   type: ssl_check
   source:
-    dns: boring.cloud
+    dns: google.com
 
 jobs:
 - name: check-ssl-days
