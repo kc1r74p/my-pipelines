@@ -9,12 +9,19 @@ resources:
 - name: boring_cloud_ssl
   type: ssl_check
   source:
-    dns: google.com
+    dns: boring.cloud
+
+- name: eu1_dev_ssl
+  type: ssl_check
+  source:
+    dns: eu1.dev
 
 jobs:
 - name: check-ssl-days
   plan:
-  - get: boring_cloud_ssl
+  - in_parallel:
+    - get: boring_cloud_ssl
+    - get: eu1_dev_ssl  
   - task: check-cert-by-dns
     config:
       platform: linux
@@ -27,3 +34,4 @@ jobs:
         - -exc
         - |
           echo ":)"
+          export
