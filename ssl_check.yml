@@ -34,4 +34,6 @@ jobs:
         - -exc
         - |
           echo ":)"
-          export
+          ls
+          cd ..
+          ls
