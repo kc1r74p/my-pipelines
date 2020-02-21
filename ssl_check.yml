@@ -28,6 +28,8 @@ jobs:
       image_resource:
         type: docker-image
         source: {repository: alpine}
+      inputs:
+      - name: boring_cloud_ssl
       run:
         path: sh
         args:
