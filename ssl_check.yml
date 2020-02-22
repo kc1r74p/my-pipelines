@@ -30,7 +30,7 @@ resources:
   source:
     uri: https://github.com/oGGy990/certbot-dns-inwx.git
 
-- name: tools
+- name: my-pipelines
   type: git
   icon: wrench
   source:
@@ -42,7 +42,7 @@ jobs:
   - in_parallel:
     - get: boring_cloud_ssl
     - get: eu1_dev_ssl
-    - get: tools
+    - get: my-pipelines
     - get: certbot
     - get: dns-inwx-challenge
   - task: check-cert-by-dns
@@ -55,12 +55,13 @@ jobs:
       - name: boring_cloud_ssl
       - name: certbot
       - name: dns-inwx-challenge
-      - name: tools
+      - name: my-pipelines
       run:
         path: sh
         args:
         - -exc
         - |
-          chmod +x tools/scripts/certbot.sh
-          tools/scripts/certbot.sh
+          ls
+          chmod +x my-pipelines/scripts/certbot.sh
+          my-pipelines/scripts/certbot.sh
 
