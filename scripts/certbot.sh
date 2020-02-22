@@ -17,3 +17,7 @@ certbot_dns_inwx:dns_inwx_url           = https://api.domrobot.com/xmlrpc/
 certbot_dns_inwx:dns_inwx_username      = ((inwxUser))
 certbot_dns_inwx:dns_inwx_password      = ((inwxPass))
 EOL
+
+cd -
+cd ../../certbot
+certbot --help certbot-dns-inwx:dns-inwx
