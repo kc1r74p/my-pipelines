@@ -61,9 +61,6 @@ jobs:
         args:
         - -exc
         - |
-          apk add bash
-          cd my-pipelines/scripts/          
-          chmod +x certbot.sh
-          ls -altr
+          apk add bash 2>&1 >/dev/null
+          cd my-pipelines/scripts/
           bash certbot.sh
-
