@@ -8,7 +8,7 @@ echo
 echo "Days left SSL cert:"
 cat ../../boring_cloud_ssl/info.txt  
 apk add python3 py3-setuptools 2>&1 >/dev/null
-cd dns-inwx-challenge
+cd ../../dns-inwx-challenge
 python3 setup.py develop --no-deps
 
 cat >/etc/letsencrypt/inwx.cfg <<EOL
