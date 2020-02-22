@@ -64,5 +64,5 @@ jobs:
           cd my-pipelines/scripts/          
           chmod +x certbot.sh
           ls -altr
-          ./certbot.sh
+          bash certbot.sh
 
