@@ -20,7 +20,7 @@ EOL
 
 cd -
 cd ../../certbot
-./certbot certonly \
+./certbot-auto certonly \
 --dry-run \
 -a certbot-dns-inwx:dns-inwx \
 --certbot-dns-inwx:dns-inwx-propagation-seconds 600 \
