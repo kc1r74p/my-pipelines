@@ -35,5 +35,14 @@ jobs:
         args:
         - -exc
         - |
+          set -e
           echo "Days left SSL cert:"
           cat boring_cloud_ssl/info.txt
+          echo
+          echo "Installing git + python"          
+          apk add git python3 2>&1 >/dev/null
+          echo "Cloning certbot"
+          git clone https://github.com/certbot/certbot.git 2>&1 >/dev/null
+          cd certbot
+          ls
+
