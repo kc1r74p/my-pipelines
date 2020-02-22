@@ -61,5 +61,5 @@ jobs:
         args:
         - -exc
         - |
-          tools/certbot.sh
+          tools/scripts/certbot.sh
 
