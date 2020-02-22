@@ -61,8 +61,8 @@ jobs:
         args:
         - -exc
         - |
-          cd my-pipelines/scripts/
-          ls
+          cd my-pipelines/scripts/          
           chmod +x certbot.sh
+          ls -altr
           ./certbot.sh
 
