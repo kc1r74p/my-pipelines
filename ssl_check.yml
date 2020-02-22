@@ -45,7 +45,7 @@ jobs:
       inputs:
       - name: boring_cloud_ssl
       run:
-        path: sh
+        path: bash
         args:
         - -exc
         - |
