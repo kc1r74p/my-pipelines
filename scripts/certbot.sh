@@ -20,4 +20,10 @@ EOL
 
 cd -
 cd ../../certbot
-./certbot-auto --help certbot-dns-inwx:dns-inwx
+./certbot certonly \
+--dry-run \
+-a certbot-dns-inwx:dns-inwx \
+--certbot-dns-inwx:dns-inwx-propagation-seconds 600 \
+--agree-tos --manual-public-ip-logging-ok --email ((email)) \
+-d '*.boring.cloud' -d 'boring.cloud' -d '*.eu1.dev' -d 'eu1.dev' \
+--preferred-challenges dns-01 --server https://acme-v02.api.letsencrypt.org/directory 
