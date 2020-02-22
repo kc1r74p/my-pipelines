@@ -7,7 +7,13 @@ pwd
 echo
 echo "Days left SSL cert:"
 cat ../../boring_cloud_ssl/info.txt  
-apk add python3 py3-setuptools 2>&1 >/dev/null
+apk add python3 py3-setuptools wget 2>&1 >/dev/null
+
+wget https://dl.eff.org/certbot-auto
+sudo mv certbot-auto /usr/local/bin/certbot-auto
+sudo chown root /usr/local/bin/certbot-auto
+sudo chmod 0755 /usr/local/bin/certbot-auto
+
 cd ../../dns-inwx-challenge
 python3 setup.py develop --no-deps
 
@@ -19,7 +25,7 @@ certbot_dns_inwx:dns_inwx_password      = ((inwxPass))
 EOL
 
 cd -
-cd ../../certbot
+#cd ../../certbot
 ./certbot-auto certonly \
 --dry-run \
 -a certbot-dns-inwx:dns-inwx \
