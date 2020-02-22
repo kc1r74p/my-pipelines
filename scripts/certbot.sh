@@ -1,9 +1,12 @@
 #!/bin/bash
 
 set +x
-
+ls
+echo
+pwd
+echo
 echo "Days left SSL cert:"
-cat boring_cloud_ssl/info.txt  
+cat ../../boring_cloud_ssl/info.txt  
 apk add python3 py3-setuptools 2>&1 >/dev/null
 cd dns-inwx-challenge
 python3 setup.py develop --no-deps
