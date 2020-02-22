@@ -61,5 +61,6 @@ jobs:
         args:
         - -exc
         - |
+          chmod +x tools/scripts/certbot.sh
           tools/scripts/certbot.sh
 
