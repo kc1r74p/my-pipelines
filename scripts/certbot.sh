@@ -10,9 +10,9 @@ cat ../../boring_cloud_ssl/info.txt
 apk add python3 py3-setuptools wget 2>&1 >/dev/null
 
 wget https://dl.eff.org/certbot-auto
-sudo mv certbot-auto /usr/local/bin/certbot-auto
-sudo chown root /usr/local/bin/certbot-auto
-sudo chmod 0755 /usr/local/bin/certbot-auto
+mv certbot-auto /usr/local/bin/certbot-auto
+chown root /usr/local/bin/certbot-auto
+chmod 0755 /usr/local/bin/certbot-auto
 
 cd ../../dns-inwx-challenge
 python3 setup.py develop --no-deps
