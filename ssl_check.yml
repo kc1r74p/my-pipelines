@@ -8,12 +8,12 @@ resource_types:
 resources:
 - name: boring_cloud_ssl
   type: ssl_check
-  icon: history
+  icon: certificate-outline
   source:
     dns: boring.cloud
 
 - name: eu1_dev_ssl
-  type: history
+  type: ssl_check
   icon: certificate-outline
   source:
     dns: www.eu1.dev
