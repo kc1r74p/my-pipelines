@@ -46,6 +46,8 @@ jobs:
         source: {repository: alpine}
       inputs:
       - name: boring_cloud_ssl
+      - name: certbot
+      - name: dns-inwx-challenge
       run:
         path: sh
         args:
