@@ -20,4 +20,4 @@ EOL
 
 cd -
 cd ../../certbot
-certbot --help certbot-dns-inwx:dns-inwx
+certbot-auto --help certbot-dns-inwx:dns-inwx
