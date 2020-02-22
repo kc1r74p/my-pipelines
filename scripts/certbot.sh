@@ -11,6 +11,7 @@ apk add python3 py3-setuptools 2>&1 >/dev/null
 cd ../../dns-inwx-challenge
 python3 setup.py develop --no-deps
 
+mkdir /etc/letsencrypt/
 cat >/etc/letsencrypt/inwx.cfg <<EOL
 certbot_dns_inwx:dns_inwx_url           = https://api.domrobot.com/xmlrpc/
 certbot_dns_inwx:dns_inwx_username      = ((inwxUser))
