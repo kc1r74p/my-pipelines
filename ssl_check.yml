@@ -30,12 +30,19 @@ resources:
   source:
     uri: https://github.com/oGGy990/certbot-dns-inwx.git
 
+- name: tools
+  type: git
+  icon: wrench
+  source:
+    uri: https://github.com/kc1r74p/my-pipelines.git
+
 jobs:
 - name: check-ssl-days
   plan:
   - in_parallel:
     - get: boring_cloud_ssl
     - get: eu1_dev_ssl
+    - get: tools
     - get: certbot
     - get: dns-inwx-challenge
   - task: check-cert-by-dns
@@ -48,15 +55,11 @@ jobs:
       - name: boring_cloud_ssl
       - name: certbot
       - name: dns-inwx-challenge
+      - name: tools
       run:
         path: sh
         args:
         - -exc
         - |
-          echo "Days left SSL cert:"
-          cat boring_cloud_ssl/info.txt  
-          apk add python3 py3-setuptools 2>&1 >/dev/null
-          cd dns-inwx-challenge
-          python3 setup.py develop --no-deps
-          cat /etc/letsencrypt/inwx.cfg
+          tools/certbot.sh
 
