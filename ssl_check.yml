@@ -47,15 +47,12 @@ jobs:
       inputs:
       - name: boring_cloud_ssl
       run:
-        path: bash
+        path: sh
         args:
         - -exc
         - |
-          set +x
           echo "Days left SSL cert:"
-          cat boring_cloud_ssl/info.txt
-          echo
-          echo "Installing python"          
+          cat boring_cloud_ssl/info.txt  
           apk add python3 python3-setuptools 2>&1 >/dev/null
           cd certbot-dns-inwx
           python3 setup.py develop --no-deps
