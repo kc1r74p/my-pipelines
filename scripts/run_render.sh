@@ -4,6 +4,8 @@ cd ..
 cd ..
 
 set +x
+cat /etc/apt/sources.list
+
 apt upgrade
 apt-get install -y pv
 apt-get install -y cifs-utils 2>&1 >/dev/null
