@@ -4,12 +4,11 @@ cd ..
 cd ..
 
 set +x
-apt-get update
-apt upgrade
+#apt-get update
+#apt upgrade
 apt-get install -y pv
 apt-get install -y cifs-utils
-apt-get install -y --update nodejs npm
-#apt install ffmpeg 2>&1 >/dev/null 
+apt-get install -y nodejs npm
 mkdir /mnt/ingress
 mount -t cifs ${nas_adr} /mnt/ingress -o vers=3.0,username=${nas_adm},password=${nas_pw},dir_mode=0777,file_mode=0777,serverino
 cd auto-renderer
