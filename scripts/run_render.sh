@@ -4,9 +4,8 @@ cd ..
 cd ..
 
 set +x
-apt-get install -y --no-install-recommends apt-utils
-apt-get update 2>&1 >/dev/null
-apt-get install -y pv 2>&1 >/dev/null 
+export DEBIAN_FRONTEND=noninteractive
+apt-get install -y pv
 apt-get install -y cifs-utils 2>&1 >/dev/null
 apt-get install -y --update nodejs npm 2>&1 >/dev/null
 #apt install ffmpeg 2>&1 >/dev/null 
