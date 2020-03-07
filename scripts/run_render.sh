@@ -1,4 +1,8 @@
 #!/bin/bash
+# get out of scripts
+cd ..
+cd ..
+
 set +x
 apt-get update 2>&1 >/dev/null
 apt-get install -y pv 2>&1 >/dev/null 
