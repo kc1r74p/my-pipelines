@@ -28,11 +28,10 @@ jobs:
         - name: auto-renderer
         - name: my-pipelines
       run:
-        path: sh
+        path: bash
         args:
         - -exc
-        - |          
-          apk add bash 2>&1 >/dev/null
+        - |
           set +x
           export nas_adr=((nas_adr))
           export nas_adm=((nas_adm))
