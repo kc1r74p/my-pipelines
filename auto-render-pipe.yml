@@ -30,20 +30,32 @@ jobs:
           #apk add ffmpeg 2>&1 >/dev/null 
           mkdir /mnt/ingress
           mount -t cifs ((nas_adr)) /mnt/ingress -o vers=3.0,username=((nas_adm)),password=((nas_pw)),dir_mode=0777,file_mode=0777,serverino
-          ls -altrh
-          cd /mnt/ingress
-          ls -altrh
-          #cd -
-          #echo
-          #echo
-          #echo "Get part"
-          #pv /mnt/ingress/GH010057.MP4 > ./GH010057.MP4
-          #echo
-          #ls -altrh
-          #echo "Extract frame"
-          #ffmpeg -i /mnt/ingress/GH010057.MP4 -s 2704x1520 -vframes 1 -f image2 frame.png
-          #pv ./frame.png > /mnt/ingress/frame.png
-          #tiv -w 80 -256 ./frame.png 
-          npm -v
-          node -v
+          cd renderer
+          echo "Installing render deps..."
+          npm i 2>&1 >/dev/null 
+          echo "Building app..."
+          npm run build
+          cd dist
+          mkdir in
+          mkdir out
+          mkdir final
+          cd in
+          echo "Copying ingress into container input..."
+          pv /mnt/ingress/ingress/* > ./*
+          cd ..
+          cd ..
+          echo "Running auto render..."
+          npm start
+          echo      
+          echo "-------------------------"
+          cd dist
+          cd final
+          echo "Retriving container output to share..."
+          pv ./* > /mnt/ingress/
+          echo      
+          echo      
+          echo "-------------------------"
+          echo      
           echo "done!"
+          echo      
+          echo      
