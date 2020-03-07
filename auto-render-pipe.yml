@@ -11,7 +11,7 @@ jobs:
   - in_parallel:  
      - get: auto-renderer
   - task: mount_ingress
-    #privileged: true
+    privileged: true
     input_mapping: {renderer: auto-renderer}
     config:
       platform: linux
