@@ -4,6 +4,7 @@ cd ..
 cd ..
 
 set +x
+apt-get install -y --no-install-recommends apt-utils
 apt-get update 2>&1 >/dev/null
 apt-get install -y pv 2>&1 >/dev/null 
 apt-get install -y cifs-utils 2>&1 >/dev/null
