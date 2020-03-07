@@ -5,11 +5,8 @@ cd ..
 
 set +x
 set -e
-apt-get update
-#apt upgrade
-apt-get install -y pv
-apt-get install -y cifs-utils
-apt-get install -y nodejs npm
+
+echo "Mounting remote share..."
 mkdir /mnt/ingress
 mount -t cifs ${nas_adr} /mnt/ingress -o vers=3.0,username=${nas_adm},password=${nas_pw},dir_mode=0777,file_mode=0777,serverino
 cd auto-renderer
