@@ -12,9 +12,9 @@ jobs:
      - get: auto-renderer
   - task: mount_ingress
     privileged: true
-    input_mapping: {renderer: auto-renderer}
     config:
       platform: linux
+      input_mapping: {renderer: auto-renderer}
       image_resource:
         type: docker-image
         source: {repository: alpine}
@@ -30,6 +30,7 @@ jobs:
           #apk add ffmpeg 2>&1 >/dev/null 
           mkdir /mnt/ingress
           mount -t cifs ((nas_adr)) /mnt/ingress -o vers=3.0,username=((nas_adm)),password=((nas_pw)),dir_mode=0777,file_mode=0777,serverino
+          ls -lh
           cd renderer
           echo "Installing render deps..."
           npm i 2>&1 >/dev/null 
