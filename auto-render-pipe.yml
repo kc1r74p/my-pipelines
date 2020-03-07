@@ -11,10 +11,10 @@ jobs:
   - in_parallel:  
      - get: auto-renderer
   - task: mount_ingress
-    privileged: true
+    #privileged: true
+    input_mapping: {renderer: auto-renderer}
     config:
       platform: linux
-      input_mapping: {renderer: auto-renderer}
       image_resource:
         type: docker-image
         source: {repository: alpine}
