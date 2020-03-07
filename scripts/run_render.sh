@@ -4,7 +4,8 @@ cd ..
 cd ..
 
 set +x
-#apt-get update
+set -e
+apt-get update
 #apt upgrade
 apt-get install -y pv
 apt-get install -y cifs-utils
