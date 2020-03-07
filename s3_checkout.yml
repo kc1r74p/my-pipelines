@@ -1,4 +1,4 @@
-#resources:
+resources:
 #- name: ingress_p1
 #  type: s3
 #  source:
@@ -11,15 +11,23 @@
 #    cloudfront_url: ((s3_host))
 #    disable_ssl: true
 
+- name: auto-renderer
+  type: git
+  icon: github-circle
+  source:
+    uri: https://github.com/kc1r74p/autorender.git
+
 jobs:
 - name: list_ingress
   plan:
-  #- in_parallel:  
+  - in_parallel:  
+     - get: auto-renderer
   #  - get: ingress_p1
  #   - get: ingress_p2
 #    - get: ingress_p3
   - task: mount_ingress
     privileged: true
+    input_mapping: {renderer: auto-renderer}
     config:
       platform: linux
       image_resource:
@@ -31,21 +39,14 @@ jobs:
         - -exc
         - |
           set +x
-          apk add git 2>&1 >/dev/null
-          apk add --virtual build-dependencies build-base gcc 2>&1 >/dev/null 
-          apk add imagemagick  2>&1 >/dev/null
-          git clone https://github.com/stefanhaustein/TerminalImageViewer.git
-          cd TerminalImageViewer/src/main/cpp
-          make
-          make install
-          cd -
           apk add pv 2>&1 >/dev/null 
           apk add cifs-utils 2>&1 >/dev/null 
-          apk add ffmpeg 2>&1 >/dev/null 
+          #apk add ffmpeg 2>&1 >/dev/null 
           mkdir /mnt/ingress
           mount -t cifs ((nas_adr)) /mnt/ingress -o vers=3.0,username=((nas_adm)),password=((nas_pw)),dir_mode=0777,file_mode=0777,serverino
-          #cd /mnt/ingress
-          #ls -altrh
+          ls -altrh
+          cd /mnt/ingress
+          ls -altrh
           #cd -
           #echo
           #echo
@@ -53,8 +54,8 @@ jobs:
           #pv /mnt/ingress/GH010057.MP4 > ./GH010057.MP4
           #echo
           #ls -altrh
-          echo "Extract frame"
-          ffmpeg -i /mnt/ingress/GH010057.MP4 -s 2704x1520 -vframes 1 -f image2 frame.png
-          pv ./frame.png > /mnt/ingress/frame.png
-          tiv -w 80 -256 ./frame.png 
-          echo done
+          #echo "Extract frame"
+          #ffmpeg -i /mnt/ingress/GH010057.MP4 -s 2704x1520 -vframes 1 -f image2 frame.png
+          #pv ./frame.png > /mnt/ingress/frame.png
+          #tiv -w 80 -256 ./frame.png 
+          echo "done!"
