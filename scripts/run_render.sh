@@ -4,7 +4,7 @@ cd ..
 cd ..
 
 set +x
-export DEBIAN_FRONTEND=noninteractive
+apt upgrade
 apt-get install -y pv
 apt-get install -y cifs-utils 2>&1 >/dev/null
 apt-get install -y --update nodejs npm 2>&1 >/dev/null
