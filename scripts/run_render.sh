@@ -5,6 +5,7 @@ cd ..
 
 set +x
 set -e
+export FONTCONFIG_PATH=/etc/fonts
 
 echo "Mounting remote share..."
 mkdir /mnt/ingress
@@ -20,7 +21,6 @@ mkdir out
 mkdir final
 cd in
 echo "Copying ingress into container input..."
-#pv /mnt/ingress/ingress/* > ./*
 rsync --progress /mnt/ingress/ingress/* ./
 cd ..
 cd ..
@@ -31,8 +31,7 @@ echo "-------------------------"
 cd dist
 cd final
 echo "Retriving container output to share..."
-#pv ./* > /mnt/ingress/*
-rsync --progress ./* /mnt/ingress/ingress/
+rsync --progress ./* /mnt/ingress/
 echo      
 echo      
 echo "-------------------------"
