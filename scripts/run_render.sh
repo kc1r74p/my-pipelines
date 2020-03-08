@@ -24,13 +24,13 @@ pv /mnt/ingress/ingress/* > ./*
 cd ..
 cd ..
 echo "Running auto render..."
-npm start
+npm start || exit 1
 echo      
 echo "-------------------------"
 cd dist
 cd final
 echo "Retriving container output to share..."
-pv ./* > /mnt/ingress/
+pv ./* > /mnt/ingress/*
 echo      
 echo      
 echo "-------------------------"
