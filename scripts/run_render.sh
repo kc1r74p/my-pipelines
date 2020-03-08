@@ -18,11 +18,18 @@ cd dist
 mkdir in
 mkdir out
 mkdir final
+ls -altrh
 cd in
 echo "Copying ingress into container input..."
 pv /mnt/ingress/ingress/* > ./*
+echo "Current dir:"
+pwd
 cd ..
 cd ..
+
+echo "Current dir:"
+pwd
+
 echo "Running auto render..."
 npm start || exit 1
 echo      
