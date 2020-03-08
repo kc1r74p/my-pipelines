@@ -11,7 +11,7 @@ mkdir /mnt/ingress
 mount -t cifs ${nas_adr} /mnt/ingress -o vers=3.0,username=${nas_adm},password=${nas_pw},dir_mode=0777,file_mode=0777,serverino
 cd auto-renderer
 echo "Installing render deps..."
-npm i 2>&1 >/dev/null 
+npm i --loglevel warn 2>&1 >/dev/null 
 echo "Building app..."
 npm run build
 cd dist
