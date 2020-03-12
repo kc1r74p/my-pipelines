@@ -34,6 +34,8 @@ rsync --progress ./* /mnt/ingress/
 echo      
 echo      
 echo "-------------------------"
+echo "Unmounting share"
+umount -l /mnt/ingress 
 echo      
 echo "done!"
 echo      
